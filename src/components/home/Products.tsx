@@ -2,11 +2,11 @@
 import products from "@/data/products.json";
 import Image from "next/image";
 import Link from "next/link";
-import { SquareArrowOutUpRight, Star, StarHalf } from "lucide-react";
+import { MoveRight, SquareArrowOutUpRight, Star, StarHalf } from "lucide-react";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { fontBangla } from "@/lib/fonts";
 
-const ProductCard = ({ product }: { product: typeof products[0] }) => {
+export const ProductCard = ({ product }: { product: typeof products[0] }) => {
   const discount = product.discount ?? 0;
   const discountedPrice = discount > 0
     ? Math.round(product.price * (1 - discount / 100))
@@ -82,7 +82,7 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
         {/* CTA */}
         <div className="flex gap-2 mt-3">
           <button
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-xl border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors"
             onClick={(e) => e.preventDefault()}
           >
             <SquareArrowOutUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
@@ -90,7 +90,7 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
             <span className="sm:hidden">Details</span>
           </button>
           <button
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-xl bg-primary text-white text-[10px] sm:text-xs font-medium hover:bg-secondary transition-colors"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm bg-primary text-white text-[10px] sm:text-xs font-medium hover:bg-secondary transition-colors"
             onClick={(e) => e.preventDefault()}
           >
             <RiShoppingCart2Line className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
@@ -106,16 +106,23 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
 const Products = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16">
-      <div className="mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our <span className="text-primary">Products</span></h2>
-        <p className="text-slate-500 mt-2 text-sm">
-          {products.length} learning kits for curious minds
-        </p>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our <span className="text-primary">Products</span></h2>
+          <p className="text-slate-500 mt-2 text-sm">
+            {products.length} learning kits for curious minds
+          </p>
+        </div>
+        <Link href="/products" className="group btn btn-primary hover:bg-secondary transition-colors">
+          Show All Products <MoveRight className="group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product) => (
+        {products.slice(0,8).map((product) => (
           <ProductCard key={product.title} product={product} />
         ))}
+      </div>
+      <div className="flex justify-end mt-8">
       </div>
     </div>
   );
