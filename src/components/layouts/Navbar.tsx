@@ -13,6 +13,11 @@ const Navbar = () => {
     { name: "Contact", href: "/contact" },
   ];
 
+  const isActive = (href: string) => {
+    if (href === "/") return path === "/";
+    return path.startsWith(href);
+  };
+
   return (
     <div className="w-full px-1 md:px-0 bg-transparent absolute top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto">
@@ -41,7 +46,7 @@ const Navbar = () => {
               >
                 {nav.map((item) => (
                   <li key={item.href}>
-                    <Link className={`${path.startsWith(item.href) && "text-primary font-medium"}`} href={item.href}>{item.name}</Link>
+                    <Link className={isActive(item.href) ? "text-primary font-medium" : ""} href={item.href}>{item.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -53,7 +58,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">
             {nav.map((item) => (
                   <li key={item.href}>
-                    <Link className={`${path.startsWith(item.href) && "text-primary font-medium"}`} href={item.href}>{item.name}</Link>
+                    <Link className={isActive(item.href) ? "text-primary font-medium" : ""} href={item.href}>{item.name}</Link>
                   </li>
                 ))}
             </ul>

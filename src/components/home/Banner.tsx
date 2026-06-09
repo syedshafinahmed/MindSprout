@@ -15,10 +15,9 @@ const Banner = () => {
         {/* Left */}
         <div>
           {/* Pill badge */}
-          <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5 text-xs text-slate-500 font-medium mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
-            Now enrolling · 2026 batch
-          </div>
+          <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-5">
+            Thrive
+          </p>
 
           <h1 className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-slate-900 mb-5 ${fontBangla.className}`}>
             প্রতিটি শিশুর জন্য একটি{" "}
@@ -66,7 +65,7 @@ const Banner = () => {
           <div className="w-80 rounded-2xl border border-slate-200 bg-white p-6 flex flex-col items-center gap-4 relative overflow-hidden">
             <div className="absolute top-0 inset-0 h-2 bg-primary" />
             <div className="w-53 h-53 mt-2 rounded-full bg-primary/10 flex items-center justify-center">
-              <Image src="/assets/hero.png" width={200} height={200} alt="HeroKidz" className="object-contain" />
+              <Image src="/assets/hero.png" width={200} height={200} alt="HeroKidz" className="object-contain h-auto w-auto" />
             </div>
             <p className="text-sm font-semibold text-slate-900 text-center">HeroKidz Activity Kit</p>
             <p className="text-xs text-slate-400 text-center -mt-2">Age 4–12 · Learn through play</p>

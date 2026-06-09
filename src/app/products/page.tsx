@@ -27,7 +27,7 @@ const EmptyState = ({ query, onClear }: { query: string; onClear: () => void }) 
       <Search className="w-7 h-7 text-slate-400" />
     </div>
     <div>
-      <p className="text-slate-700 font-semibold text-lg">No results for "{query}"</p>
+      <p className="text-slate-700 font-semibold text-lg">No results for &quot;{query}&quot;</p>
       <p className="text-slate-400 text-sm mt-1">Try a different keyword or clear the search</p>
     </div>
     <button
@@ -107,14 +107,14 @@ const ProductsPage = () => {
       {/* Hero  */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto mt-20 px-4 pt-12 pb-8">
-          <p className="text-xs font-semibold tracking-widest uppercase text-primary mb-2">
+          <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-2">
             Explore
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-3">
             All <span className="text-primary">Products</span>
           </h1>
           <p className="text-slate-500 text-sm md:text-base max-w-xl">
-            {loading ? "..." : products.length} learning kits carefully crafted for curious minds — discover
+            {loading ? "..." : products.length} learning kits carefully crafted for curious minds discover
             the perfect kit for your little explorer.
           </p>
         </div>
