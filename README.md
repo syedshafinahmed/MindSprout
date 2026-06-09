@@ -1,4 +1,4 @@
-# Hero Kidzz - Project Assets
+# MindSprout - Project Assets
 <img src="assets/hero.png">
 ## Overview
 
