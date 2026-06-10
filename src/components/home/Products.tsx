@@ -1,15 +1,61 @@
 "use client";
 import { useState, useEffect } from "react";
-import productsJson from "@/data/products.json";
+import { Product } from "../../app/types/product";
 import Image from "next/image";
 import Link from "next/link";
 import { MoveRight, SquareArrowOutUpRight, Star, StarHalf } from "lucide-react";
 import { RiShoppingCart2Line } from "react-icons/ri";
 import { fontBangla } from "@/lib/fonts";
 
-type ProductType = typeof productsJson[0];
+type ProductType = Product;
+
+// Outside the component, at module level
+const colorCache = new Map<string, string>();
+
+async function getDominantColor(src: string): Promise<string> {
+  if (colorCache.has(src)) return colorCache.get(src)!; // ← return cached result
+  
+  return new Promise((resolve) => {
+    const img = document.createElement("img");
+    img.crossOrigin = "anonymous";
+    img.src = src;
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 10; // ← reduce from 50x50 to 10x10, still accurate enough
+      canvas.height = 10;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return resolve("#166534");
+      ctx.drawImage(img, 0, 0, 10, 10);
+      const data = ctx.getImageData(0, 0, 10, 10).data;
+      let r = 0, g = 0, b = 0, count = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        const brightness = (data[i] + data[i+1] + data[i+2]) / 3;
+        if (brightness < 20 || brightness > 235) continue;
+        r += data[i]; g += data[i+1]; b += data[i+2];
+        count++;
+      }
+      canvas.width = 0; // ← explicitly free the canvas memory
+      canvas.height = 0;
+      const color = count === 0
+        ? "#166534"
+        : `rgba(${Math.round(r/count)},${Math.round(g/count)},${Math.round(b/count)},0.3)`;
+      colorCache.set(src, color); // ← cache it
+      resolve(color);
+    };
+    img.onerror = () => {
+      colorCache.set(src, "#166534");
+      resolve("#166534");
+    };
+  });
+}
 
 export const ProductCard = ({ product }: { product: ProductType }) => {
+  const [dominantColor, setDominantColor] = useState<string>("#166534"); // fallback
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    getDominantColor(product.image).then(setDominantColor);
+  }, [product.image]);
   const discount = product.discount ?? 0;
   const discountedPrice = discount > 0
     ? Math.round(product.price * (1 - discount / 100))
@@ -20,8 +66,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
     const hasHalf = stars - fullStars >= 0.5;
 
   return (
-    <Link href={`/products/${encodeURIComponent(product.title)}`}
-      className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200">
+    <Link href={`/products/${encodeURIComponent(product.title)}`} className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 
       {/* Image */}
       <div className="relative aspect-square overflow-hidden bg-slate-50">
@@ -40,7 +85,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
       </div>
 
       {/* Info */}
-      <div className="p-4 flex flex-col gap-2 flex-1">
+      <div className="p-4 flex flex-col gap-2 flex-1" style={{ backgroundColor: isHovered ? dominantColor : "white" }}>
         <p className={`text-xs text-slate-400 line-clamp-1 ${fontBangla.className}`}>{product.bangla}</p>
         <p className="text-sm font-semibold text-slate-900 leading-snug line-clamp-1">
           {product.title}

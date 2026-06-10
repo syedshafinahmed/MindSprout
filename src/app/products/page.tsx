@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import productsJson from "@/data/products.json";
+import { Product } from "../types/product";
 
-type ProductType = typeof productsJson[0];
+type ProductType = Product;
 import { Search, SlidersHorizontal, X, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/home/Products";
 
