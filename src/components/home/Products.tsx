@@ -14,7 +14,7 @@ const colorCache = new Map<string, string>();
 
 async function getDominantColor(src: string): Promise<string> {
   if (colorCache.has(src)) return colorCache.get(src)!; // ← return cached result
-  
+
   return new Promise((resolve) => {
     const img = document.createElement("img");
     img.crossOrigin = "anonymous";
@@ -27,18 +27,24 @@ async function getDominantColor(src: string): Promise<string> {
       if (!ctx) return resolve("#166534");
       ctx.drawImage(img, 0, 0, 10, 10);
       const data = ctx.getImageData(0, 0, 10, 10).data;
-      let r = 0, g = 0, b = 0, count = 0;
+      let r = 0,
+        g = 0,
+        b = 0,
+        count = 0;
       for (let i = 0; i < data.length; i += 4) {
-        const brightness = (data[i] + data[i+1] + data[i+2]) / 3;
+        const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
         if (brightness < 20 || brightness > 235) continue;
-        r += data[i]; g += data[i+1]; b += data[i+2];
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
         count++;
       }
       canvas.width = 0; // ← explicitly free the canvas memory
       canvas.height = 0;
-      const color = count === 0
-        ? "#166534"
-        : `rgba(${Math.round(r/count)},${Math.round(g/count)},${Math.round(b/count)},0.3)`;
+      const color =
+        count === 0
+          ? "#166534"
+          : `rgba(${Math.round(r / count)},${Math.round(g / count)},${Math.round(b / count)},0.3)`;
       colorCache.set(src, color); // ← cache it
       resolve(color);
     };
@@ -49,7 +55,13 @@ async function getDominantColor(src: string): Promise<string> {
   });
 }
 
-export const ProductCard = ({ product }: { product: ProductType }) => {
+export const ProductCard = ({
+  product,
+  id,
+}: {
+  product: ProductType;
+  id: number;
+}) => {
   const [dominantColor, setDominantColor] = useState<string>("#166534"); // fallback
   const [isHovered, setIsHovered] = useState(false);
 
@@ -57,17 +69,22 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
     getDominantColor(product.image).then(setDominantColor);
   }, [product.image]);
   const discount = product.discount ?? 0;
-  const discountedPrice = discount > 0
-    ? Math.round(product.price * (1 - discount / 100))
-    : product.price;
+  const discountedPrice =
+    discount > 0
+      ? Math.round(product.price * (1 - discount / 100))
+      : product.price;
 
-    const stars = product.ratings;
-    const fullStars = Math.floor(stars);
-    const hasHalf = stars - fullStars >= 0.5;
+  const stars = product.ratings;
+  const fullStars = Math.floor(stars);
+  const hasHalf = stars - fullStars >= 0.5;
 
   return (
-    <Link href={`/products/${encodeURIComponent(product.title)}`} className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-
+    <Link
+      href={`/products/${id}`}
+      className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Image */}
       <div className="relative aspect-square overflow-hidden bg-slate-50">
         <Image
@@ -85,8 +102,15 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
       </div>
 
       {/* Info */}
-      <div className="p-4 flex flex-col gap-2 flex-1" style={{ backgroundColor: isHovered ? dominantColor : "white" }}>
-        <p className={`text-xs text-slate-400 line-clamp-1 ${fontBangla.className}`}>{product.bangla}</p>
+      <div
+        className="p-4 flex flex-col gap-2 flex-1"
+        style={{ backgroundColor: isHovered ? dominantColor : "white" }}
+      >
+        <p
+          className={`text-xs text-slate-400 line-clamp-1 ${fontBangla.className}`}
+        >
+          {product.bangla}
+        </p>
         <p className="text-sm font-semibold text-slate-900 leading-snug line-clamp-1">
           {product.title}
         </p>
@@ -94,18 +118,32 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
         {/* Rating */}
         <div className="flex items-center gap-1">
           <div className="flex items-center gap-0.5">
-          {Array.from({ length: 5 }, (_, i) => {
-            if (i < fullStars) {
-              return <Star key={i} className="w-3 h-3 text-primary" fill="currentColor" />;
-            }
-            if (i === fullStars && hasHalf) {
-              return <StarHalf key={i} className="w-3 h-3 text-primary" fill="currentColor" />;
-            }
-            return <Star key={i} className="w-3 h-3 text-slate-300" fill="none" />;
-          })}
+            {Array.from({ length: 5 }, (_, i) => {
+              if (i < fullStars) {
+                return (
+                  <Star
+                    key={i}
+                    className="w-3 h-3 text-primary"
+                    fill="currentColor"
+                  />
+                );
+              }
+              if (i === fullStars && hasHalf) {
+                return (
+                  <StarHalf
+                    key={i}
+                    className="w-3 h-3 text-primary"
+                    fill="currentColor"
+                  />
+                );
+              }
+              return (
+                <Star key={i} className="w-3 h-3 text-slate-300" fill="none" />
+              );
+            })}
           </div>
           <span className="text-xs font-bold text-slate-400">
-            {product.ratings} 
+            {product.ratings}
             {/* · {product.reviews} reviews */}
           </span>
         </div>
@@ -131,8 +169,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
         {/* CTA */}
         <div className="flex gap-2 mt-3">
           <button
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors"
-            onClick={(e) => e.preventDefault()}
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors cursor-pointer"
           >
             <SquareArrowOutUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
             <span className="hidden sm:inline">View Details</span>
@@ -191,24 +228,33 @@ const Products = () => {
     <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
         <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our <span className="text-primary">Products</span></h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+            Our <span className="text-primary">Products</span>
+          </h2>
           <p className="text-slate-500 mt-2 text-sm">
             {loading ? "..." : products.length} learning kits for curious minds
           </p>
         </div>
-        <Link href="/products" className="group btn btn-primary hover:bg-secondary transition-colors">
-          Show All Products <MoveRight className="group-hover:translate-x-1 transition-transform" />
+        <Link
+          href="/products"
+          className="group btn btn-primary hover:bg-secondary transition-colors"
+        >
+          Show All Products{" "}
+          <MoveRight className="group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
-          ? Array.from({ length: 8 }).map((_, idx) => <SkeletonCard key={idx} />)
-          : products.slice(0, 8).map((product) => (
-              <ProductCard key={product.title} product={product} />
-            ))}
+          ? Array.from({ length: 8 }).map((_, idx) => (
+              <SkeletonCard key={idx} />
+            ))
+          : products
+              .slice(0, 8)
+              .map((product, index) => (
+                <ProductCard key={product.title} product={product} id={index} />
+              ))}
       </div>
-      <div className="flex justify-end mt-8">
-      </div>
+      <div className="flex justify-end mt-8"></div>
     </div>
   );
 };

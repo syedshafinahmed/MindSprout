@@ -7,28 +7,43 @@ type ProductType = Product;
 import { Search, SlidersHorizontal, X, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/home/Products";
 
-// Types 
+// Types
 
-type SortOption = "featured" | "price-asc" | "price-desc" | "rating" | "discount";
+type SortOption =
+  | "featured"
+  | "price-asc"
+  | "price-desc"
+  | "rating"
+  | "discount";
 
 const SORT_LABELS: Record<SortOption, string> = {
-  featured:    "Featured",
+  featured: "Featured",
   "price-asc": "Price: Low to High",
-  "price-desc":"Price: High to Low",
-  rating:      "Top Rated",
-  discount:    "Biggest Discount",
+  "price-desc": "Price: High to Low",
+  rating: "Top Rated",
+  discount: "Biggest Discount",
 };
 
-// Empty State 
+// Empty State
 
-const EmptyState = ({ query, onClear }: { query: string; onClear: () => void }) => (
+const EmptyState = ({
+  query,
+  onClear,
+}: {
+  query: string;
+  onClear: () => void;
+}) => (
   <div className="col-span-full flex flex-col items-center justify-center py-24 gap-4 text-center">
     <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center">
       <Search className="w-7 h-7 text-slate-400" />
     </div>
     <div>
-      <p className="text-slate-700 font-semibold text-lg">No results for &quot;{query}&quot;</p>
-      <p className="text-slate-400 text-sm mt-1">Try a different keyword or clear the search</p>
+      <p className="text-slate-700 font-semibold text-lg">
+        No results for &quot;{query}&quot;
+      </p>
+      <p className="text-slate-400 text-sm mt-1">
+        Try a different keyword or clear the search
+      </p>
     </div>
     <button
       onClick={onClear}
@@ -39,13 +54,13 @@ const EmptyState = ({ query, onClear }: { query: string; onClear: () => void }) 
   </div>
 );
 
-// Page 
+// Page
 
 const ProductsPage = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(true);
-  const [query,  setQuery]  = useState("");
-  const [sort,   setSort]   = useState<SortOption>("featured");
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<SortOption>("featured");
   const [sortOpen, setSortOpen] = useState(false);
 
   useEffect(() => {
@@ -69,23 +84,30 @@ const ProductsPage = () => {
     let list = q
       ? products.filter(
           (p) =>
-            p.title.toLowerCase().includes(q) ||
-            (p.bangla ?? "").includes(q)
+            p.title.toLowerCase().includes(q) || (p.bangla ?? "").includes(q),
         )
       : [...products];
 
     switch (sort) {
       case "price-asc":
         list.sort((a, b) => {
-          const ap = a.discount ? Math.round(a.price * (1 - a.discount / 100)) : a.price;
-          const bp = b.discount ? Math.round(b.price * (1 - b.discount / 100)) : b.price;
+          const ap = a.discount
+            ? Math.round(a.price * (1 - a.discount / 100))
+            : a.price;
+          const bp = b.discount
+            ? Math.round(b.price * (1 - b.discount / 100))
+            : b.price;
           return ap - bp;
         });
         break;
       case "price-desc":
         list.sort((a, b) => {
-          const ap = a.discount ? Math.round(a.price * (1 - a.discount / 100)) : a.price;
-          const bp = b.discount ? Math.round(b.price * (1 - b.discount / 100)) : b.price;
+          const ap = a.discount
+            ? Math.round(a.price * (1 - a.discount / 100))
+            : a.price;
+          const bp = b.discount
+            ? Math.round(b.price * (1 - b.discount / 100))
+            : b.price;
           return bp - ap;
         });
         break;
@@ -114,8 +136,8 @@ const ProductsPage = () => {
             All <span className="text-primary">Products</span>
           </h1>
           <p className="text-slate-500 text-sm md:text-base max-w-xl">
-            {loading ? "..." : products.length} learning kits carefully crafted for curious minds discover
-            the perfect kit for your little explorer.
+            {loading ? "..." : products.length} learning kits carefully crafted
+            for curious minds discover the perfect kit for your little explorer.
           </p>
         </div>
       </div>
@@ -123,7 +145,6 @@ const ProductsPage = () => {
       {/* Toolbar */}
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-
           {/* Search */}
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
@@ -160,7 +181,9 @@ const ProductsPage = () => {
             >
               <SlidersHorizontal className="w-4 h-4 text-slate-400" />
               {SORT_LABELS[sort]}
-              <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${sortOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                className={`w-3.5 h-3.5 text-slate-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             {sortOpen && (
@@ -174,7 +197,10 @@ const ProductsPage = () => {
                   {(Object.keys(SORT_LABELS) as SortOption[]).map((key) => (
                     <button
                       key={key}
-                      onClick={() => { setSort(key); setSortOpen(false); }}
+                      onClick={() => {
+                        setSort(key);
+                        setSortOpen(false);
+                      }}
                       className={`w-full text-left px-4 py-2 text-sm transition-colors ${
                         sort === key
                           ? "bg-primary/5 text-primary font-medium"
@@ -209,7 +235,10 @@ const ProductsPage = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {loading ? (
             Array.from({ length: 8 }).map((_, idx) => (
-              <div key={idx} className="bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col animate-pulse">
+              <div
+                key={idx}
+                className="bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col animate-pulse"
+              >
                 <div className="aspect-square bg-slate-100" />
                 <div className="p-4 flex flex-col gap-2 flex-1">
                   <div className="h-3 bg-slate-100 rounded w-1/2" />
@@ -226,9 +255,18 @@ const ProductsPage = () => {
           ) : filtered.length === 0 ? (
             <EmptyState query={query} onClear={() => setQuery("")} />
           ) : (
-            filtered.map((product) => (
-              <ProductCard key={product.title} product={product} />
-            ))
+            filtered.map((product) => {
+              const originalIndex = products.findIndex(
+                (p) => p.title === product.title,
+              );
+              return (
+                <ProductCard
+                  key={product.title}
+                  product={product}
+                  id={originalIndex}
+                />
+              );
+            })
           )}
         </div>
       </div>

@@ -1,16 +1,16 @@
-import Link from 'next/link';
-import Logo from './Logo';
-import { ImLinkedin2 } from 'react-icons/im';
-import { SiDiscord } from 'react-icons/si';
-import { TbBrandGithubFilled } from 'react-icons/tb';
+import Link from "next/link";
+import Logo from "./Logo";
+import { ImLinkedin2 } from "react-icons/im";
+import { SiDiscord } from "react-icons/si";
+import { TbBrandGithubFilled } from "react-icons/tb";
 
 const Footer = () => {
   return (
     <div className="w-full relative">
       <div className="max-w-7xl mx-auto px-4">
-
         {/* Dashed Top Right Fade Grid */}
-        <div className="absolute inset-0 z-0"
+        <div
+          className="absolute inset-0 z-0"
           style={{
             backgroundImage: `
               linear-gradient(to right, color-mix(in oklab, var(--color-primary) 40%, transparent) 0.5px, transparent 1px),
@@ -34,15 +34,14 @@ const Footer = () => {
 
         {/* Content */}
         <div className="relative z-10 pt-16 pb-8">
-
           {/* Top section */}
           <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 pb-12">
-
             {/* Brand col */}
             <div className="space-y-4">
               <Logo />
               <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
-                Empowering the next generation of heroes through fun, curiosity, and meaningful learning experiences.
+                Empowering the next generation of heroes through fun, curiosity,
+                and meaningful learning experiences.
               </p>
             </div>
 
@@ -84,16 +83,25 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} HeroKidz. All rights reserved.
             </span>
             <div className="flex items-center gap-3">
-              <Link href="https://github.com/syedshafinahmed" target="_blank"
-                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <Link
+                href="https://github.com/syedshafinahmed"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              >
                 <TbBrandGithubFilled size={16} className="text-primary" />
               </Link>
-              <Link href="https://www.linkedin.com/in/syed-shafin-ahmed/" target="_blank"
-                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <Link
+                href="https://www.linkedin.com/in/syed-shafin-ahmed/"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              >
                 <ImLinkedin2 size={16} className="text-primary" />
               </Link>
-              <Link href="https://discord.com/users/1440245018341277756" target="_blank"
-                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+              <Link
+                href="https://discord.com/users/1440245018341277756"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+              >
                 <SiDiscord size={16} className="text-primary" />
               </Link>
             </div>

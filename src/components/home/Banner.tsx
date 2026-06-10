@@ -7,11 +7,10 @@ const Banner = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 mt-8 md:mt-15 relative">
       {/* Decorative blobs */}
-      <div className="pointer-events-none absolute -top-16 -right-16 w-80 h-80 rounded-full bg-primary opacity-10" />
+      <div className="pointer-events-none absolute -top-16 right-20 w-80 h-80 rounded-full bg-primary opacity-10" />
       <div className="pointer-events-none hidden md:flex absolute -bottom-10 left-1/3 w-52 h-52 rounded-full bg-primary opacity-10 z-100" />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center">
-
         {/* Left */}
         <div>
           {/* Pill badge */}
@@ -19,16 +18,17 @@ const Banner = () => {
             Thrive
           </p>
 
-          <h1 className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-slate-900 mb-5 ${fontBangla.className}`}>
+          <h1
+            className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-slate-900 mb-5 ${fontBangla.className}`}
+          >
             প্রতিটি শিশুর জন্য একটি{" "}
-            <span className="text-primary pb-0.5">
-              উজ্জ্বল আগামী
-            </span>{" "}
-            গড়ার অঙ্গীকার
+            <span className="text-primary pb-0.5">উজ্জ্বল আগামী</span> গড়ার
+            অঙ্গীকার
           </h1>
 
           <p className="text-base text-slate-500 leading-relaxed mb-8">
-            Empowering the next generation of heroes through fun, curiosity, and meaningful learning experiences.
+            Empowering the next generation of heroes through fun, curiosity, and
+            meaningful learning experiences.
           </p>
 
           <div className="flex items-center gap-1 md:gap-3">
@@ -49,11 +49,13 @@ const Banner = () => {
           <div className="flex justify-center md:justify-start gap-8 mt-8 pt-6 border-t border-primary/40">
             {[
               { value: "12,000+", label: "happy kids" },
-              { value: "4.9 ★",  label: "parent rating" },
-              { value: "50+",    label: "activity kits" },
+              { value: "4.9 ★", label: "parent rating" },
+              { value: "50+", label: "activity kits" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center">
-                <p className="text-xl font-semibold text-slate-900">{s.value}</p>
+                <p className="text-xl font-semibold text-slate-900">
+                  {s.value}
+                </p>
                 <p className="text-xs text-slate-500 mt-1">{s.label}</p>
               </div>
             ))}
@@ -65,13 +67,28 @@ const Banner = () => {
           <div className="w-80 rounded-2xl border border-slate-200 bg-white p-6 flex flex-col items-center gap-4 relative overflow-hidden">
             <div className="absolute top-0 inset-0 h-2 bg-primary" />
             <div className="w-53 h-53 mt-2 rounded-full bg-primary/10 flex items-center justify-center">
-              <Image src="/assets/hero.png" width={200} height={200} alt="HeroKidz" className="object-contain h-auto w-auto" />
+              <Image
+                src="/assets/hero.png"
+                width={200}
+                height={200}
+                alt="HeroKidz"
+                className="object-contain h-auto w-auto"
+              />
             </div>
-            <p className="text-sm font-semibold text-slate-900 text-center">HeroKidz Activity Kit</p>
-            <p className="text-xs text-slate-400 text-center -mt-2">Age 4–12 · Learn through play</p>
+            <p className="text-sm font-semibold text-slate-900 text-center">
+              HeroKidz Activity Kit
+            </p>
+            <p className="text-xs text-slate-400 text-center -mt-2">
+              Age 4–12 · Learn through play
+            </p>
             <div className="flex gap-2 flex-wrap justify-center">
               {["Creative", "STEM", "Language"].map((tag) => (
-                <span key={tag} className="text-[10px] px-3 py-1 rounded-full bg-primary/10 text-primary">{tag}</span>
+                <span
+                  key={tag}
+                  className="text-[10px] px-3 py-1 rounded-full bg-primary/10 text-primary"
+                >
+                  {tag}
+                </span>
               ))}
             </div>
           </div>
@@ -81,7 +98,10 @@ const Banner = () => {
             🧡 430 parents loved this
           </div>
           <div className="absolute flex gap-0.5 items-center -bottom-7 md:-bottom-3 -left-2 md:-left-19 bg-white border border-slate-200 rounded-lg px-3 py-2 text-xs shadow-sm">
-            <span className="text-primary font-medium"><Check size={20} /></span> Ships in 2 days
+            <span className="text-primary font-medium">
+              <Check size={20} />
+            </span>{" "}
+            Ships in 2 days
           </div>
         </div>
       </div>

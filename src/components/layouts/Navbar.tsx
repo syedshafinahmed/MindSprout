@@ -24,7 +24,11 @@ const Navbar = () => {
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
-              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden btn-primary">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost lg:hidden btn-primary"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -46,7 +50,14 @@ const Navbar = () => {
               >
                 {nav.map((item) => (
                   <li key={item.href}>
-                    <Link className={isActive(item.href) ? "text-primary font-medium" : ""} href={item.href}>{item.name}</Link>
+                    <Link
+                      className={
+                        isActive(item.href) ? "text-primary font-medium" : ""
+                      }
+                      href={item.href}
+                    >
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -56,19 +67,28 @@ const Navbar = () => {
 
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-            {nav.map((item) => (
-                  <li key={item.href}>
-                    <Link className={isActive(item.href) ? "text-primary font-medium" : ""} href={item.href}>{item.name}</Link>
-                  </li>
-                ))}
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    className={
+                      isActive(item.href) ? "text-primary font-medium" : ""
+                    }
+                    href={item.href}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="navbar-end gap-4">
-            <Link href='/cart' className="btn btn-primary btn-square">
-              <RiShoppingCart2Line size={20}/>
+            <Link href="/cart" className="btn btn-primary btn-square">
+              <RiShoppingCart2Line size={20} />
             </Link>
-            <Link href='/login' className="btn btn-primary btn-outline">Login</Link>
+            <Link href="/login" className="btn btn-primary btn-outline">
+              Login
+            </Link>
           </div>
         </div>
       </div>
