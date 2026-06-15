@@ -2,7 +2,7 @@
 <img src="assets/hero.png">
 ## Overview
 
-Hero Kidzz is a small, single-vendor e-commerce web application designed for selling children's products. This repository contains all project assets including images, icons, and media files.
+MindSprout is a small, single-vendor e-commerce web application designed for selling children's products. This repository contains all project assets including images, icons, and media files.
 
 ## Features
 
@@ -54,4 +54,4 @@ Follow project guidelines when adding new assets.
 ## License
 
 All assets are proprietary to Hero Kidzz.
-# Hero-Kidz-assets
+# MindSprout-assets
