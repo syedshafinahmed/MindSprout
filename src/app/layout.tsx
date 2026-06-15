@@ -9,8 +9,11 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: "HeroKidz - Educational Toys for Kids",
-  description: "Empowering the next generation of heroes through fun, curiosity, and meaningful learning experiences.",
+  title: {
+    default: "MindSprout - Educational Toys for Kids",
+    template: "%s | MindSprout - Educational Toys for Kids",
+  },
+  description: "Empowering the next generation of minds through fun, curiosity, and meaningful learning experiences.",
   icons: {
     icon: "/favicon.png",
   },

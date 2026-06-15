@@ -228,18 +228,18 @@ const Products = () => {
     <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
         <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+          <h2 className="text-2xl md:text-4xl font-bold text-slate-900">
             Our <span className="text-primary">Products</span>
           </h2>
-          <p className="text-slate-500 mt-2 text-sm">
+          <p className="text-slate-500 mt-2 text-xs md:text-sm">
             {loading ? "..." : products.length} learning kits for curious minds
           </p>
         </div>
         <Link
           href="/products"
-          className="group btn btn-primary hover:bg-secondary transition-colors"
+          className="group btn w-2/5 text-xs md:text-base ml-auto md:w-1/6 btn-primary hover:bg-secondary transition-colors"
         >
-          Show All Products{" "}
+          All Products{" "}
           <MoveRight className="group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

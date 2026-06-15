@@ -39,7 +39,7 @@ const Footer = () => {
             {/* Brand col */}
             <div className="space-y-4">
               <Logo />
-              <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+              <p className="text-sm text-slate-600 text-justify leading-relaxed max-w-xs">
                 Empowering the next generation of heroes through fun, curiosity,
                 and meaningful learning experiences.
               </p>
@@ -67,7 +67,7 @@ const Footer = () => {
                 <ul className="space-y-2.5">
                   {links.map((l) => (
                     <li key={l}>
-                      <a className="text-sm text-slate-500 hover:text-primary transition-colors">
+                      <a className="text-sm text-slate-600 hover:text-primary transition-colors">
                         {l}
                       </a>
                     </li>
@@ -79,8 +79,8 @@ const Footer = () => {
 
           {/* Bottom bar — mirrors banner stats strip */}
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:items-center justify-between">
-            <span className="text-xs text-slate-400">
-              &copy; {new Date().getFullYear()} HeroKidz. All rights reserved.
+            <span className="text-xs text-slate-600">
+              &copy; {new Date().getFullYear()} <span className="text-slate-900 font-bold">Mind<span className="text-primary font-bold">Sprout</span></span>. All rights reserved.
             </span>
             <div className="flex items-center gap-3">
               <Link
