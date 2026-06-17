@@ -1,5 +1,5 @@
-# MindSprout - Project Assets
-<img src="assets/hero.png">
+# <img height="28" alt="logo" src="https://github.com/user-attachments/assets/2d691a8f-36a9-4523-abd6-0cce0b558c76" /> MindSprout
+
 ## Overview
 
 MindSprout is a small, single-vendor e-commerce web application designed for selling children's products. This repository contains all project assets including images, icons, and media files.
@@ -46,12 +46,3 @@ npm install react-icons mongodb bcryptjs
 1. Clone the repository
 2. Extract assets to your project directory
 3. Reference images in your application
-
-## Contributing
-
-Follow project guidelines when adding new assets.
-
-## License
-
-All assets are proprietary to Hero Kidzz.
-# MindSprout-assets
