@@ -53,5 +53,5 @@ Follow project guidelines when adding new assets.
 
 ## License
 
-All assets are proprietary to Hero Kidzz.
+All assets are proprietary to MindSprout.
 # MindSprout-assets
