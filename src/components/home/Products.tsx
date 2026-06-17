@@ -228,8 +228,11 @@ const Products = () => {
     <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
         <div className="mb-10">
+          <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-2">
+            Discover
+          </p>
           <h2 className="text-2xl md:text-4xl font-bold text-slate-900">
-            Our <span className="text-primary">Products</span>
+            Our <span className="text-primary">Collection</span>
           </h2>
           <p className="text-slate-500 mt-2 text-xs md:text-sm">
             {loading ? "..." : products.length} learning kits for curious minds

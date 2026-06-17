@@ -17,7 +17,6 @@ const Banner = () => {
           <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-5">
             Thrive
           </p>
-
           <h1
             className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-slate-900 mb-5 ${fontBangla.className}`}
           >
