@@ -46,12 +46,3 @@ npm install react-icons mongodb bcryptjs
 1. Clone the repository
 2. Extract assets to your project directory
 3. Reference images in your application
-
-## Contributing
-
-Follow project guidelines when adding new assets.
-
-## License
-
-All assets are proprietary to Hero Kidzz.
-# MindSprout-assets
