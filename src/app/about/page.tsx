@@ -1,7 +1,22 @@
-import { fontBangla } from "@/lib/fonts";
 import { ArrowRight, Heart, Lightbulb, ShieldCheck, Sparkles } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SITE_URL } from "../layout";
+
+// metadata
+export const metadata: Metadata = {
+  title:       "About MindSprout",
+  description:
+    "Learn about MindSprout — our mission to make learning fun, hands-on, and " +
+    "accessible for every child in Bangladesh.",
+  alternates:  { canonical: "/about" },
+  openGraph: {
+    title:       "About MindSprout",
+    description: "Our mission: making learning fun for every curious kid.",
+    url:         `${SITE_URL}/contact`,
+  },
+};
 
 const values = [
   {

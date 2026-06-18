@@ -42,3 +42,5 @@ next-env.d.ts
 
 # json data
 /src/data/products.json
+
+.vercel

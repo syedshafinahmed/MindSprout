@@ -55,13 +55,7 @@ async function getDominantColor(src: string): Promise<string> {
   });
 }
 
-export const ProductCard = ({
-  product,
-  id,
-}: {
-  product: ProductType;
-  id: number;
-}) => {
+export const ProductCard = ({ product }: { product: ProductType }) => {
   const [dominantColor, setDominantColor] = useState<string>("#166534"); // fallback
   const [isHovered, setIsHovered] = useState(false);
 
@@ -80,7 +74,9 @@ export const ProductCard = ({
 
   return (
     <Link
-      href={`/products/${id}`}
+      // href={`/products/${id}`}
+      // href={`/products/${encodeURIComponent(product.title)}`}
+      href={`/products/${product.title.toLowerCase().replace(/\s+/g, "-")}`}
       className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -254,7 +250,8 @@ const Products = () => {
           : products
               .slice(0, 8)
               .map((product, index) => (
-                <ProductCard key={product.title} product={product} id={index} />
+                // <ProductCard key={product.title} product={product} id={index} />
+                <ProductCard key={product.title} product={product} />
               ))}
       </div>
       <div className="flex justify-end mt-8"></div>

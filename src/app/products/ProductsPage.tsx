@@ -6,6 +6,7 @@ import { Product } from "../types/product";
 type ProductType = Product;
 import { Search, SlidersHorizontal, X, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/home/Products";
+import { Metadata } from "next";
 
 // Types
 
@@ -15,6 +16,20 @@ type SortOption =
   | "price-desc"
   | "rating"
   | "discount";
+
+  export const metadata: Metadata = {
+    title:       "All bal Products",
+    description:
+      "Browse all MindSprout learning kits — STEM sets, creative kits, and language " +
+      "tools crafted for curious minds in Bangladesh.",
+    alternates:  { canonical: "/products" },
+    openGraph: {
+      title:       "All Products | MindSprout",
+      description: "Browse all MindSprout learning kits for curious kids.",
+      url:         "https://mindsprout-ssa.vercel.app/products",
+      images: [{ url: "/og/products.png", width: 1200, height: 630 }],
+    },
+  };
 
 const SORT_LABELS: Record<SortOption, string> = {
   featured: "Featured",
@@ -261,9 +276,7 @@ const ProductsPage = () => {
               );
               return (
                 <ProductCard
-                  key={product.title}
-                  product={product}
-                  id={originalIndex}
+                key={product.title} product={product}
                 />
               );
             })
