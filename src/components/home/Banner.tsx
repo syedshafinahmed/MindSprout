@@ -8,7 +8,7 @@ const Banner = () => {
     <div className="max-w-7xl mx-auto px-4 py-16 mt-8 md:mt-15 relative">
       {/* Decorative blobs */}
       <div className="pointer-events-none absolute -top-16 right-20 w-80 h-80 rounded-full bg-primary opacity-10" />
-      <div className="pointer-events-none hidden md:flex absolute -bottom-10 left-1/3 w-52 h-52 rounded-full bg-primary opacity-10 z-100" />
+      <div className="pointer-events-none hidden md:flex absolute -bottom-10 left-1/3 w-52 h-52 rounded-full bg-primary opacity-10 z-10" />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-center">
         {/* Left */}

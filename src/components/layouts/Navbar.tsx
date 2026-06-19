@@ -1,11 +1,14 @@
 "use client";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Link from "next/link";
 import { RiShoppingCart2Line } from "react-icons/ri";
+import AuthModal from "../modal/AuthModal";
 
 const Navbar = () => {
   const path = usePathname();
+  const [authOpen, setAuthOpen] = useState(false);
   const nav = [
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
@@ -86,12 +89,17 @@ const Navbar = () => {
             <Link href="/cart" className="btn btn-primary btn-square">
               <RiShoppingCart2Line size={20} />
             </Link>
-            <Link href="/login" className="btn btn-primary btn-outline">
+            <button
+              onClick={() => setAuthOpen(true)}
+              className="btn btn-primary btn-outline"
+            >
               Login
-            </Link>
+            </button>
           </div>
         </div>
       </div>
+
+      <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
     </div>
   );
 };
