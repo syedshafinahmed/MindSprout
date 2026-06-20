@@ -49,7 +49,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={-1}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 text-neutral rounded-box z-50 mt-3 w-52 p-2 shadow"
               >
                 {nav.map((item) => (
                   <li key={item.href}>
@@ -69,7 +69,7 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal text-neutral px-1">
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -86,12 +86,12 @@ const Navbar = () => {
           </div>
 
           <div className="navbar-end gap-4">
-            <Link href="/cart" className="btn btn-primary btn-square">
+            <Link href="/cart" className="btn btn-primary btn-square shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_70%,transparent)] hover:-translate-y-0.5 transition-all">
               <RiShoppingCart2Line size={20} />
             </Link>
             <button
               onClick={() => setAuthOpen(true)}
-              className="btn btn-primary btn-outline"
+              className="btn btn-primary btn-outline hover:-translate-y-0.5 transition-all"
             >
               Login
             </button>

@@ -12,7 +12,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-// Types 
+// Types
 
 type FormState = {
   name: string;
@@ -49,7 +49,7 @@ const contactDetails = [
   },
 ];
 
-// FAQ items 
+// FAQ items
 
 const faqs = [
   {
@@ -66,7 +66,7 @@ const faqs = [
   },
 ];
 
-// Page 
+// Page
 
 const ContactPage = () => {
   const [form, setForm] = useState<FormState>({
@@ -79,7 +79,9 @@ const ContactPage = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.MouseEvent) => {
@@ -96,7 +98,6 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
-
       {/* Hero */}
       <div className="flex justify-center items-center mt-10">
         <div className="bg-white">
@@ -104,19 +105,19 @@ const ContactPage = () => {
             <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-4">
               Get in touch
             </p>
-            <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-3">
+            <h1 className="text-3xl md:text-5xl font-bold text-neutral mb-3">
               We'd love to <span className="text-primary">hear from you</span>
             </h1>
             <p className="text-slate-500 text-sm md:text-base max-w-2xl">
               Have a question about an order, need help choosing a kit, or just
-              want to say hi? Drop us a message and we'll get back to you shortly.
+              want to say hi? Drop us a message and we'll get back to you
+              shortly.
             </p>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
-
         {/* Contact cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {contactDetails.map(({ icon: Icon, label, value, sub, href }) => (
@@ -125,16 +126,16 @@ const ContactPage = () => {
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className="group bg-white border border-slate-200 rounded-2xl p-5 flex items-start gap-4 hover:border-primary hover:-translate-0.5 transition-all hover:shadow-md duration-200"
+              className="group bg-white border border-slate-200 rounded-md p-5 flex items-start gap-4 hover:border-primary hover:-translate-0.5 transition-all hover:shadow-md duration-200"
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
                   {label}
                 </p>
-                <p className="text-sm font-semibold text-slate-900 truncate group-hover:text-primary transition-colors">
+                <p className="text-sm font-semibold text-neutral truncate group-hover:text-primary transition-colors">
                   {value}
                 </p>
                 <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-1">
@@ -148,12 +149,11 @@ const ContactPage = () => {
 
         {/* Main two-col layout */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-
           {/* Form */}
-          <div className="lg:col-span-3 bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
+          <div className="lg:col-span-3 bg-white border border-slate-200 rounded-md p-6 md:p-8">
             <div className="flex items-center gap-2 mb-6">
               <MessageSquare className="w-5 h-5 text-primary" />
-              <h2 className="text-lg font-bold text-slate-900">Send a message</h2>
+              <h2 className="text-lg font-bold text-neutral">Send a message</h2>
             </div>
 
             {isSuccess ? (
@@ -163,7 +163,9 @@ const ContactPage = () => {
                   <CheckCircle2 className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <p className="text-slate-900 font-bold text-lg">Message sent!</p>
+                  <p className="text-neutral font-bold text-lg">
+                    Message sent!
+                  </p>
                   <p className="text-slate-500 text-sm mt-1">
                     Thanks, {form.name.split(" ")[0]}. We'll be in touch soon.
                   </p>
@@ -192,7 +194,7 @@ const ContactPage = () => {
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Rahim Uddin"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition"
+                      className="w-full px-4 py-2.5 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -205,7 +207,7 @@ const ContactPage = () => {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="rahim@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition"
+                      className="w-full px-4 py-2.5 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition"
                     />
                   </div>
                 </div>
@@ -218,7 +220,7 @@ const ContactPage = () => {
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition appearance-none"
+                    className="w-full px-4 py-2.5 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-800 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition appearance-none"
                   >
                     <option value="">Select a topic…</option>
                     <option value="order">Order & Delivery</option>
@@ -239,13 +241,15 @@ const ContactPage = () => {
                     onChange={handleChange}
                     rows={5}
                     placeholder="Tell us how we can help…"
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition resize-none"
+                    className="w-full px-4 py-2.5 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 focus:bg-white transition resize-none"
                   />
                 </div>
 
                 <button
                   onClick={handleSubmit}
-                  disabled={isLoading || !form.name || !form.email || !form.message}
+                  disabled={
+                    isLoading || !form.name || !form.email || !form.message
+                  }
                   className="btn btn-primary hover:bg-secondary transition-colors self-start gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
@@ -266,8 +270,8 @@ const ContactPage = () => {
 
           {/* Sidebar: FAQ */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6">
-              <h2 className="text-base font-bold text-slate-900 mb-4">
+            <div className="bg-white border border-slate-200 rounded-md p-6">
+              <h2 className="text-base font-bold text-neutral mb-4">
                 Frequently asked
               </h2>
               <div className="flex flex-col divide-y divide-slate-100">
@@ -297,12 +301,12 @@ const ContactPage = () => {
             </div>
 
             {/* Response time badge */}
-            <div className="bg-primary/5 border border-slate-200 hover:border-primary hover:-translate-0.5 transition-all rounded-2xl p-5 flex items-start gap-3">
+            <div className="bg-primary/5 border border-slate-200 hover:border-primary hover:-translate-0.5 transition-all rounded-md p-5 flex items-start gap-3">
               <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                 <Clock className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900">
+                <p className="text-sm font-semibold text-neutral">
                   Quick response guaranteed
                 </p>
                 <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
@@ -312,7 +316,6 @@ const ContactPage = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

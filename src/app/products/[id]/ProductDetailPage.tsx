@@ -24,14 +24,14 @@ function Skeleton() {
     <div className="max-w-7xl mx-auto px-4 py-10 animate-pulse">
       <div className="h-4 w-24 bg-slate-100 rounded mb-8" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="aspect-square bg-slate-100 rounded-2xl" />
+        <div className="aspect-square bg-slate-100 rounded-md" />
         <div className="flex flex-col gap-4">
           <div className="h-3 w-20 bg-slate-100 rounded" />
           <div className="h-7 w-3/4 bg-slate-100 rounded" />
           <div className="h-4 w-1/3 bg-slate-100 rounded" />
           <div className="h-10 w-1/2 bg-slate-100 rounded" />
-          <div className="h-12 bg-slate-100 rounded-xl mt-4" />
-          <div className="h-12 bg-slate-100 rounded-xl" />
+          <div className="h-12 bg-slate-100 rounded-md mt-4" />
+          <div className="h-12 bg-slate-100 rounded-md" />
         </div>
       </div>
     </div>
@@ -178,7 +178,7 @@ export default function ProductDetailPage() {
       {/* ── Hero Grid ── */}
       <section className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start">
         {/* Image */}
-        <div className="relative aspect-square rounded-2xl overflow-hidden bg-slate-50 border border-slate-100">
+        <div className="relative aspect-square rounded-md overflow-hidden bg-slate-50 border border-slate-100">
           <Image
             src={product.image}
             alt={product.title}
@@ -204,7 +204,7 @@ export default function ProductDetailPage() {
           </p>
 
           {/* Title */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-snug">
+          <h1 className="text-3xl sm:text-4xl font-bold text-neutral leading-snug">
             {product.title}
           </h1>
 
@@ -218,17 +218,17 @@ export default function ProductDetailPage() {
             </div>
             <div className="flex gap-2">
               <span className="text-sm text-yellow-600 bg-yellow-50 px-3 py-0.5 rounded-full">
-                 {product.reviews} reviews
+                {product.reviews} reviews
               </span>
               <span className="text-sm text-blue-600 bg-blue-50 px-3 py-0.5 rounded-full">
-                 {product.sold} sold
+                {product.sold} sold
               </span>
             </div>
           </div>
 
           {/* Price */}
           <div className="flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-slate-900">
+            <span className="text-3xl font-bold text-neutral">
               ৳{discountedPrice.toLocaleString()}
             </span>
             {discount > 0 && (
@@ -262,7 +262,7 @@ export default function ProductDetailPage() {
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
             <button
               onClick={handleAddToCart}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+              className={`flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-md text-sm font-semibold transition-all duration-200 ${
                 added
                   ? "bg-emerald-500 text-white"
                   : "bg-primary hover:bg-secondary text-white active:scale-[0.98]"
@@ -281,7 +281,7 @@ export default function ProductDetailPage() {
               )}
             </button>
 
-            <button className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-sm font-semibold border border-primary text-primary hover:bg-primary/5 transition-colors active:scale-[0.98]">
+            <button className="flex-1 flex items-center justify-center gap-2 py-3 px-5 rounded-md text-sm font-semibold border border-primary text-primary hover:bg-primary/5 transition-colors active:scale-[0.98]">
               <CreditCard className="w-4 h-4" />
               Buy now
             </button>
@@ -306,7 +306,7 @@ export default function ProductDetailPage() {
       <section className="max-w-7xl mx-auto px-4 pb-20 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 mt-4">
         {/* Description */}
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-3 pb-2 border-b border-slate-100">
+          <h2 className="text-2xl font-bold text-neutral mb-3 pb-2 border-b border-slate-100">
             About this product
           </h2>
           <p
@@ -319,7 +319,7 @@ export default function ProductDetailPage() {
         {/* Q&A */}
         {product.qna.length > 0 && (
           <div>
-            <h2 className="text-base font-bold text-slate-900 mb-1 pb-2 border-b border-slate-100">
+            <h2 className="text-base font-bold text-neutral mb-1 pb-2 border-b border-slate-100">
               Frequently asked questions
             </h2>
             {product.qna.map((item, i) => (

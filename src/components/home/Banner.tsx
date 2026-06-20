@@ -18,7 +18,7 @@ const Banner = () => {
             Thrive
           </p>
           <h1
-            className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-slate-900 mb-5 ${fontBangla.className}`}
+            className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-neutral mb-5 ${fontBangla.className}`}
           >
             প্রতিটি শিশুর জন্য একটি{" "}
             <span className="text-primary pb-0.5">উজ্জ্বল আগামী</span> গড়ার
@@ -33,12 +33,12 @@ const Banner = () => {
           <div className="flex items-center gap-1 md:gap-3">
             <Link
               href="/products"
-              className="inline-flex items-center gap-1 bg-primary btn hover:bg-primary text-white text-sm font-medium transition-colors"
+              className="inline-flex items-center gap-1 bg-primary btn text-white text-sm font-medium shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_70%,transparent)] hover:-translate-y-0.5 transition-all"
             >
               Explore products
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <button className="inline-flex items-center gap-1 text-sm btn btn-primary btn-outline transition-colors">
+            <button className="inline-flex items-center gap-1 text-sm btn btn-primary btn-outline hover:-translate-y-0.5 transition-all">
               <Play className="w-4 h-4" />
               See how it works
             </button>
@@ -52,9 +52,7 @@ const Banner = () => {
               { value: "50+", label: "activity kits" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col items-center">
-                <p className="text-xl font-semibold text-slate-900">
-                  {s.value}
-                </p>
+                <p className="text-xl font-semibold text-neutral">{s.value}</p>
                 <p className="text-xs text-slate-500 mt-1">{s.label}</p>
               </div>
             ))}
@@ -63,7 +61,7 @@ const Banner = () => {
 
         {/* Right: product card */}
         <div className="relative flex items-center justify-center">
-          <div className="w-80 rounded-2xl border border-slate-200 bg-white p-6 flex flex-col items-center gap-4 relative overflow-hidden">
+          <div className="w-80 rounded-md border border-slate-200 bg-white p-6 flex flex-col items-center gap-4 relative overflow-hidden">
             <div className="absolute top-0 inset-0 h-2 bg-primary" />
             <div className="w-53 h-53 mt-2 rounded-full bg-primary/10 flex items-center justify-center">
               <Image
@@ -74,7 +72,7 @@ const Banner = () => {
                 className="object-contain h-auto w-auto"
               />
             </div>
-            <p className="text-sm font-semibold text-slate-900 text-center">
+            <p className="text-sm font-semibold text-neutral text-center">
               HeroKidz Activity Kit
             </p>
             <p className="text-xs text-slate-400 text-center -mt-2">

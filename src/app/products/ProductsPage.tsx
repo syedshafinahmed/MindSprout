@@ -17,19 +17,19 @@ type SortOption =
   | "rating"
   | "discount";
 
-  export const metadata: Metadata = {
-    title:       "All bal Products",
-    description:
-      "Browse all MindSprout learning kits — STEM sets, creative kits, and language " +
-      "tools crafted for curious minds in Bangladesh.",
-    alternates:  { canonical: "/products" },
-    openGraph: {
-      title:       "All Products | MindSprout",
-      description: "Browse all MindSprout learning kits for curious kids.",
-      url:         "https://mindsprout-ssa.vercel.app/products",
-      images: [{ url: "/og/products.png", width: 1200, height: 630 }],
-    },
-  };
+export const metadata: Metadata = {
+  title: "All bal Products",
+  description:
+    "Browse all MindSprout learning kits — STEM sets, creative kits, and language " +
+    "tools crafted for curious minds in Bangladesh.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "All Products | MindSprout",
+    description: "Browse all MindSprout learning kits for curious kids.",
+    url: "https://mindsprout-ssa.vercel.app/products",
+    images: [{ url: "/og/products.png", width: 1200, height: 630 }],
+  },
+};
 
 const SORT_LABELS: Record<SortOption, string> = {
   featured: "Featured",
@@ -147,7 +147,7 @@ const ProductsPage = () => {
           <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-2">
             Explore
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-3">
+          <h1 className="text-3xl md:text-5xl font-bold text-neutral mb-3">
             All <span className="text-primary">Products</span>
           </h1>
           <p className="text-slate-500 text-sm md:text-base max-w-xl">
@@ -252,7 +252,7 @@ const ProductsPage = () => {
             Array.from({ length: 8 }).map((_, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col animate-pulse"
+                className="bg-white border border-slate-200 rounded-md overflow-hidden flex flex-col animate-pulse"
               >
                 <div className="aspect-square bg-slate-100" />
                 <div className="p-4 flex flex-col gap-2 flex-1">
@@ -274,11 +274,7 @@ const ProductsPage = () => {
               const originalIndex = products.findIndex(
                 (p) => p.title === product.title,
               );
-              return (
-                <ProductCard
-                key={product.title} product={product}
-                />
-              );
+              return <ProductCard key={product.title} product={product} />;
             })
           )}
         </div>

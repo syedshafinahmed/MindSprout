@@ -39,7 +39,7 @@ const Footer = () => {
             {/* Brand col */}
             <div className="space-y-4">
               <Logo />
-              <p className="text-sm text-slate-600 text-justify leading-relaxed max-w-xs">
+              <p className="text-sm text-neutral text-justify leading-relaxed max-w-xs">
                 Empowering the next generation of heroes through fun, curiosity,
                 and meaningful learning experiences.
               </p>
@@ -67,7 +67,7 @@ const Footer = () => {
                 <ul className="space-y-2.5">
                   {links.map((l) => (
                     <li key={l}>
-                      <a className="text-sm text-slate-600 hover:text-primary transition-colors">
+                      <a className="text-sm text-neutral hover:text-primary transition-colors">
                         {l}
                       </a>
                     </li>
@@ -80,27 +80,31 @@ const Footer = () => {
           {/* Bottom bar — mirrors banner stats strip */}
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:items-center justify-between">
             <span className="text-xs text-slate-600">
-              &copy; {new Date().getFullYear()} <span className="text-slate-900 font-bold">Mind<span className="text-primary font-bold">Sprout</span></span>. All rights reserved.
+              &copy; {new Date().getFullYear()}{" "}
+              <span className="text-neutral font-bold">
+                Mind<span className="text-primary font-bold">Sprout</span>
+              </span>
+              . All rights reserved.
             </span>
             <div className="flex items-center gap-3">
               <Link
                 href="https://github.com/syedshafinahmed"
                 target="_blank"
-                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
               >
                 <TbBrandGithubFilled size={16} className="text-primary" />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/syed-shafin-ahmed/"
                 target="_blank"
-                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
               >
                 <ImLinkedin2 size={16} className="text-primary" />
               </Link>
               <Link
                 href="https://discord.com/users/1440245018341277756"
                 target="_blank"
-                className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
               >
                 <SiDiscord size={16} className="text-primary" />
               </Link>

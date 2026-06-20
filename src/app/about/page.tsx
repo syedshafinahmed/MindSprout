@@ -1,4 +1,10 @@
-import { ArrowRight, Heart, Lightbulb, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Heart,
+  Lightbulb,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,15 +12,15 @@ import { SITE_URL } from "../layout";
 
 // metadata
 export const metadata: Metadata = {
-  title:       "About MindSprout",
+  title: "About MindSprout",
   description:
     "Learn about MindSprout — our mission to make learning fun, hands-on, and " +
     "accessible for every child in Bangladesh.",
-  alternates:  { canonical: "/about" },
+  alternates: { canonical: "/about" },
   openGraph: {
-    title:       "About MindSprout",
+    title: "About MindSprout",
     description: "Our mission: making learning fun for every curious kid.",
-    url:         `${SITE_URL}/contact`,
+    url: `${SITE_URL}/contact`,
   },
 };
 
@@ -42,9 +48,24 @@ const values = [
 ];
 
 const team = [
-  { image: "https://res.cloudinary.com/dxipjzeda/image/upload/v1775483435/IMG_20260308_005554.jpg_sade1o.jpg", name: "Shafin Ahmed", role: "Co-founder & CEO" },
-  { image: "https://res.cloudinary.com/dxipjzeda/image/upload/v1774283978/samples/smile.jpg", name: "Ahmed Dhruv", role: "Head of Product" },
-  { image: "https://res.cloudinary.com/dxipjzeda/image/upload/v1774283971/samples/people/smiling-man.jpg", name: "Keyser Soze", role: "Lead Designer" },
+  {
+    image:
+      "https://res.cloudinary.com/dxipjzeda/image/upload/v1775483435/IMG_20260308_005554.jpg_sade1o.jpg",
+    name: "Shafin Ahmed",
+    role: "Co-founder & CEO",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dxipjzeda/image/upload/v1774283978/samples/smile.jpg",
+    name: "Ahmed Dhruv",
+    role: "Head of Product",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dxipjzeda/image/upload/v1774283971/samples/people/smiling-man.jpg",
+    name: "Keyser Soze",
+    role: "Lead Designer",
+  },
 ];
 
 const AboutPage = () => {
@@ -61,15 +82,15 @@ const AboutPage = () => {
             <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-4">
               Mission
             </p>
-            <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-5 leading-snug">
+            <h2 className="text-2xl md:text-4xl font-bold text-neutral mb-5 leading-snug">
               We don&apos;t just sell kits.{" "}
               <span className="text-primary">We sell moments.</span>
             </h2>
             <p className="text-slate-500 leading-relaxed mb-4">
               The moment a child builds their first circuit, paints their first
               canvas, or reads their first Bengali word — that&apos;s what we
-              work for. HeroKidz kits are crafted to create those moments,
-              again and again.
+              work for. HeroKidz kits are crafted to create those moments, again
+              and again.
             </p>
             <p className="text-slate-500 leading-relaxed">
               We partner with child development experts, educators, and parents
@@ -79,7 +100,7 @@ const AboutPage = () => {
           </div>
 
           {/* Card */}
-          <div className="w-full rounded-2xl border border-slate-200 bg-white p-8 flex flex-col gap-5 relative overflow-hidden">
+          <div className="w-full rounded-md border border-slate-200 bg-white p-8 flex flex-col gap-5 relative overflow-hidden">
             <div className="absolute top-0 inset-x-0 h-1.5 bg-primary rounded-t-2xl" />
             <p className="text-xs font-semibold tracking-tight italic uppercase text-primary">
               Why parents choose us
@@ -108,19 +129,19 @@ const AboutPage = () => {
           <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-4">
             Values
           </p>
-          <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-12 max-w-xl leading-snug">
+          <h2 className="text-2xl md:text-4xl font-bold text-neutral mb-12 max-w-xl leading-snug">
             What we stand for
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="flex flex-col gap-4 p-6 rounded-2xl border border-slate-200 hover:border-primary hover:-translate-0.5 transition-all bg-white"
+                className="flex flex-col gap-4 p-6 rounded-md border border-slate-200 hover:border-primary hover:-translate-0.5 transition-all bg-white"
               >
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-primary" />
                 </div>
-                <p className="font-semibold text-slate-900 text-sm">{title}</p>
+                <p className="font-semibold text-neutral text-sm">{title}</p>
                 <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
               </div>
             ))}
@@ -133,14 +154,14 @@ const AboutPage = () => {
         <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-4">
           Team
         </p>
-        <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-12 leading-snug">
+        <h2 className="text-2xl md:text-4xl font-bold text-neutral mb-12 leading-snug">
           The people behind Mind<span className="text-primary">Sprout</span>
         </h2>
         <div className="flex flex-wrap gap-6">
           {team.map(({ image, name, role }) => (
             <div
-            key={name}
-            className="flex items-center gap-4 p-5 rounded-2xl border border-slate-200 hover:border-primary hover:-translate-0.5 transition-all bg-white min-w-56"
+              key={name}
+              className="flex items-center gap-4 p-5 rounded-md border border-slate-200 hover:border-primary hover:-translate-0.5 transition-all bg-white min-w-56"
             >
               <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
                 <Image
@@ -152,7 +173,7 @@ const AboutPage = () => {
                 />
               </div>
               <div>
-                <p className="font-semibold text-slate-900 text-sm">{name}</p>
+                <p className="font-semibold text-neutral text-sm">{name}</p>
                 <p className="text-xs text-slate-500 mt-0.5">{role}</p>
               </div>
             </div>
@@ -167,7 +188,7 @@ const AboutPage = () => {
             <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-3">
               Get started
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-neutral">
               Ready to find the perfect kit?
             </h2>
             <p className="text-slate-500 text-sm mt-2">

@@ -77,7 +77,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
       // href={`/products/${id}`}
       // href={`/products/${encodeURIComponent(product.title)}`}
       href={`/products/${product.title.toLowerCase().replace(/\s+/g, "-")}`}
-      className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200"
+      className="group bg-white border border-slate-200 rounded-md overflow-hidden flex flex-col hover:border-primary/40 transition-colors duration-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -107,7 +107,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
         >
           {product.bangla}
         </p>
-        <p className="text-sm font-semibold text-slate-900 leading-snug line-clamp-1">
+        <p className="text-sm font-semibold text-neutral leading-snug line-clamp-1">
           {product.title}
         </p>
 
@@ -146,7 +146,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
 
         {/* Price */}
         <div className="flex items-baseline gap-2">
-          <span className="text-base font-semibold text-slate-900">
+          <span className="text-base font-semibold text-neutral">
             ৳{discountedPrice.toLocaleString()}
           </span>
           {discount > 0 && (
@@ -164,9 +164,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
 
         {/* CTA */}
         <div className="flex gap-2 mt-3">
-          <button
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors cursor-pointer"
-          >
+          <button className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors cursor-pointer">
             <SquareArrowOutUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
             <span className="hidden sm:inline">View Details</span>
             <span className="sm:hidden">Details</span>
@@ -186,7 +184,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
 };
 
 export const SkeletonCard = () => (
-  <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col animate-pulse">
+  <div className="bg-white border border-slate-200 rounded-md overflow-hidden flex flex-col animate-pulse">
     <div className="aspect-square bg-slate-100" />
     <div className="p-4 flex flex-col gap-2 flex-1">
       <div className="h-3 bg-slate-100 rounded w-1/2" />
@@ -227,7 +225,7 @@ const Products = () => {
           <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-2">
             Discover
           </p>
-          <h2 className="text-2xl md:text-4xl font-bold text-slate-900">
+          <h2 className="text-2xl md:text-4xl font-bold text-neutral">
             Our <span className="text-primary">Collection</span>
           </h2>
           <p className="text-slate-500 mt-2 text-xs md:text-sm">
@@ -236,7 +234,7 @@ const Products = () => {
         </div>
         <Link
           href="/products"
-          className="group btn w-2/5 text-xs md:text-base ml-auto md:w-1/6 btn-primary hover:bg-secondary transition-colors"
+          className="group btn w-2/5 text-xs md:text-base ml-auto md:w-1/6 btn-primary shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_70%,transparent)] hover:-translate-y-0.5 transition-all"
         >
           All Products{" "}
           <MoveRight className="group-hover:translate-x-1 transition-transform" />
@@ -247,12 +245,10 @@ const Products = () => {
           ? Array.from({ length: 8 }).map((_, idx) => (
               <SkeletonCard key={idx} />
             ))
-          : products
-              .slice(0, 8)
-              .map((product, index) => (
-                // <ProductCard key={product.title} product={product} id={index} />
-                <ProductCard key={product.title} product={product} />
-              ))}
+          : products.slice(0, 8).map((product, index) => (
+              // <ProductCard key={product.title} product={product} id={index} />
+              <ProductCard key={product.title} product={product} />
+            ))}
       </div>
       <div className="flex justify-end mt-8"></div>
     </div>

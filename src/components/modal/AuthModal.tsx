@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import { RiCloseLine, RiAppleFill, RiGoogleFill } from "react-icons/ri";
 
-
 type AuthModalProps = {
   open: boolean;
   onClose: () => void;
@@ -27,12 +26,12 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
       />
 
       {/* Modal shell */}
-      <div className="relative w-full max-w-[920px] max-h-[90vh] bg-base-200 rounded-[28px] shadow-2xl overflow-hidden grid md:grid-cols-[2fr_3fr] animate-[modalRise_0.3s_cubic-bezier(0.16,1,0.3,1)]">
+      <div className="relative w-full max-w-220 bg-base-200 rounded-md shadow-2xl overflow-hidden grid md:grid-cols-[2fr_3fr] animate-[modalRise_0.3s_cubic-bezier(0.16,1,0.3,1)]">
         {/* Close button */}
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-4 top-4 z-20 grid h-9 w-9 place-items-center rounded-full bg-base-100/90 text-base-content shadow-sm transition-transform hover:scale-105 hover:bg-base-100"
+          className="absolute right-2 top-2 z-20 grid h-7 w-7 place-items-center rounded-md bg-base-100/90 text-base-content shadow-sm transition-transform hover:scale-105 hover:bg-base-100"
         >
           <RiCloseLine size={20} />
         </button>
@@ -45,7 +44,13 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
           <div className="pointer-events-none absolute top-1/3 right-6 h-24 w-24 rounded-full bg-accent opacity-20 blur-2xl" />
 
           <div className="relative flex justify-center items-center z-10">
-            <Image src="/assets/logo.png" alt="Logo" width={50} height={50} className= "w-8 h-8 md:w-20 md:h-20" />
+            <Image
+              src="/assets/logo.png"
+              alt="Logo"
+              width={50}
+              height={50}
+              className="w-8 h-8 md:w-20 md:h-20"
+            />
           </div>
 
           <div className="relative z-10 space-y-4">
@@ -55,8 +60,8 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
               picked by parents.
             </h2>
             <p className="text-sm leading-relaxed text-neutral-content/75">
-              Join thousands of Bangladeshi families building brighter
-              futures, one story, toy, and lesson at a time.
+              Join thousands of Bangladeshi families building brighter futures,
+              one story, toy, and lesson at a time.
             </p>
           </div>
 
@@ -83,9 +88,9 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
         {/* Right form panel */}
         <div className="relative flex flex-col overflow-y-auto px-7 py-8 sm:px-10 sm:py-9">
           {/* Tab switcher */}
-          <div className="relative mb-8 grid grid-cols-2 rounded-full bg-base-300 p-1">
+          <div className="relative mb-8 grid grid-cols-2 rounded-md bg-base-300 p-1">
             <div
-              className="absolute inset-y-1 w-[calc(50%-4px)] rounded-full bg-neutral shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="absolute inset-y-1 w-[calc(50%-4px)] rounded-md bg-neutral shadow-sm transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
               style={{
                 transform:
                   activeTab === "login"
@@ -95,7 +100,7 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
             />
             <button
               onClick={() => setActiveTab("login")}
-              className={`relative z-10 rounded-full py-2.5 text-sm font-medium transition-colors duration-300 ${
+              className={`relative z-10 rounded-md py-2.5 text-sm font-medium transition-colors duration-300 ${
                 activeTab === "login"
                   ? "text-neutral-content"
                   : "text-base-content/60 hover:text-base-content"
@@ -105,7 +110,7 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
             </button>
             <button
               onClick={() => setActiveTab("register")}
-              className={`relative z-10 rounded-full py-2.5 text-sm font-medium transition-colors duration-300 ${
+              className={`relative z-10 rounded-md py-2.5 text-sm font-medium transition-colors duration-300 ${
                 activeTab === "register"
                   ? "text-neutral-content"
                   : "text-base-content/60 hover:text-base-content"
@@ -136,7 +141,7 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
                     id="login-email"
                     type="email"
                     placeholder="you@example.com"
-                    className="h-12 rounded-xl border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
+                    className="h-12 rounded-md border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
                   />
                 </div>
 
@@ -159,13 +164,13 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
                     id="login-password"
                     type="password"
                     placeholder="••••••••"
-                    className="h-12 rounded-xl border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
+                    className="h-12 rounded-md border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="mt-2 h-12 rounded-xl bg-primary text-sm font-semibold text-white shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] active:translate-y-0"
+                  className="mt-2 h-12 rounded-md bg-primary text-sm font-semibold text-white shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] active:translate-y-0"
                 >
                   Log in
                 </button>
@@ -181,14 +186,14 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
-                    className="flex h-11 items-center justify-center gap-2 rounded-xl border border-base-content/10 bg-base-100 text-sm font-medium text-base-content transition-colors hover:bg-base-300"
+                    className="flex h-11 items-center justify-center gap-2 rounded-md border border-base-content/10 bg-base-100 text-sm font-medium text-base-content transition-colors hover:bg-base-300"
                   >
                     <RiGoogleFill size={17} />
                     Google
                   </button>
                   <button
                     type="button"
-                    className="flex h-11 items-center justify-center gap-2 rounded-xl border border-base-content/10 bg-base-100 text-sm font-medium text-base-content transition-colors hover:bg-base-300"
+                    className="flex h-11 items-center justify-center gap-2 rounded-md border border-base-content/10 bg-base-100 text-sm font-medium text-base-content transition-colors hover:bg-base-300"
                   >
                     <RiAppleFill size={17} />
                     Apple
@@ -197,7 +202,11 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
               </form>
 
               <p className="mt-6 text-center text-sm text-base-content/55">
-                New to <span className="text-slate-900">Mind<span className="text-primary">Sprout</span></span>?{" "}
+                New to{" "}
+                <span className="text-neutral">
+                  Mind<span className="text-primary">Sprout</span>
+                </span>
+                ?{" "}
                 <button
                   onClick={() => setActiveTab("register")}
                   className="font-semibold text-neutral hover:underline"
@@ -227,7 +236,7 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
                     id="reg-name"
                     type="text"
                     placeholder="Fatima Rahman"
-                    className="h-12 rounded-xl border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
+                    className="h-12 rounded-md border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
                   />
                 </div>
 
@@ -242,7 +251,7 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
                     id="reg-email"
                     type="email"
                     placeholder="you@example.com"
-                    className="h-12 rounded-xl border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
+                    className="h-12 rounded-md border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
                   />
                 </div>
 
@@ -257,20 +266,20 @@ const AuthModal = ({ open, onClose }: AuthModalProps) => {
                     id="reg-password"
                     type="password"
                     placeholder="At least 8 characters"
-                    className="h-12 rounded-xl border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
+                    className="h-12 rounded-md border border-base-content/10 bg-base-100 px-4 text-sm text-base-content placeholder:text-base-content/35 outline-none transition-all focus:border-primary focus:ring-2 focus:ring-neutral/15"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="mt-2 h-12 rounded-xl bg-primary text-sm font-semibold text-white shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] active:translate-y-0"
+                  className="mt-2 h-12 rounded-md bg-primary text-sm font-semibold text-white shadow-[0_8px_20px_-6px_color-mix(in_srgb,var(--color-primary)_55%,transparent)] transition-transform hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-6px_color-mix(in_srgb,var(--color-primary)_60%,transparent)] active:translate-y-0"
                 >
                   Create account
                 </button>
 
                 <p className="text-center text-[11px] leading-relaxed text-base-content/45">
-                  By continuing you agree to MindSprout&apos;s Terms of
-                  Service and Privacy Policy.
+                  By continuing you agree to MindSprout&apos;s Terms of Service
+                  and Privacy Policy.
                 </p>
               </form>
 

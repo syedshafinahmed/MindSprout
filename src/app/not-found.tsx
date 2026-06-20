@@ -15,7 +15,7 @@ const NotFound = () => {
         </p>
 
         {/* 404 */}
-        <h1 className="text-7xl md:text-9xl font-bold text-slate-900 leading-none mb-4">
+        <h1 className="text-7xl md:text-9xl font-bold text-neutral leading-none mb-4">
           4<span className="text-primary">0</span>4
         </h1>
 
