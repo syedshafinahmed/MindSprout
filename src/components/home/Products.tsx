@@ -82,7 +82,7 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image */}
-      <div className="relative aspect-square overflow-hidden bg-slate-50">
+      <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
         <Image
           src={product.image}
           alt={product.title}
@@ -102,59 +102,64 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
         className="p-4 flex flex-col gap-2 flex-1"
         style={{ backgroundColor: isHovered ? dominantColor : "white" }}
       >
-        <p
-          className={`text-xs text-slate-400 line-clamp-1 ${fontBangla.className}`}
-        >
-          {product.bangla}
-        </p>
-        <p className="text-sm font-semibold text-neutral leading-snug line-clamp-1">
+        {/* {product.bangla && (
+          <p
+            className={`text-xs text-slate-400 line-clamp-1 ${fontBangla.className}`}
+          >
+            {product.bangla}
+          </p>
+        )} */}
+        <p className="text-base font-semibold text-neutral leading-snug line-clamp-2">
           {product.title}
         </p>
 
-        {/* Rating */}
-        <div className="flex items-center gap-1">
-          <div className="flex items-center gap-0.5">
-            {Array.from({ length: 5 }, (_, i) => {
-              if (i < fullStars) {
+        <div className="flex justify-between items-center">
+          {/* Rating */}
+          <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0.5">
+              {Array.from({ length: 5 }, (_, i) => {
+                if (i < fullStars) {
+                  return (
+                    <Star
+                      key={i}
+                      className="w-3 h-3 text-primary"
+                      fill="currentColor"
+                    />
+                  );
+                }
+                if (i === fullStars && hasHalf) {
+                  return (
+                    <StarHalf
+                      key={i}
+                      className="w-3 h-3 text-primary"
+                      fill="currentColor"
+                    />
+                  );
+                }
                 return (
-                  <Star
-                    key={i}
-                    className="w-3 h-3 text-primary"
-                    fill="currentColor"
-                  />
+                  <Star key={i} className="w-3 h-3 text-slate-300" fill="none" />
                 );
-              }
-              if (i === fullStars && hasHalf) {
-                return (
-                  <StarHalf
-                    key={i}
-                    className="w-3 h-3 text-primary"
-                    fill="currentColor"
-                  />
-                );
-              }
-              return (
-                <Star key={i} className="w-3 h-3 text-slate-300" fill="none" />
-              );
-            })}
+              })}
+            </div>
+            <span className="text-[10px] font-bold text-slate-400">
+              {product.ratings}
+              {/* · {product.reviews} reviews */}
+            </span>
           </div>
-          <span className="text-xs font-bold text-slate-400">
-            {product.ratings}
-            {/* · {product.reviews} reviews */}
-          </span>
+
+          {/* Price */}
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm font-semibold text-neutral">
+              ৳{discountedPrice.toLocaleString()}
+            </span>
+            {discount > 0 && (
+              <span className="text-[10px] text-slate-400 line-through">
+                ৳{product.price.toLocaleString()}
+              </span>
+            )}
+          </div>
         </div>
 
-        {/* Price */}
-        <div className="flex items-baseline gap-2">
-          <span className="text-base font-semibold text-neutral">
-            ৳{discountedPrice.toLocaleString()}
-          </span>
-          {discount > 0 && (
-            <span className="text-xs text-slate-400 line-through">
-              ৳{product.price.toLocaleString()}
-            </span>
-          )}
-        </div>
 
         {/* Sold */}
         {/* <div className="flex items-center gap-1.5">
@@ -166,16 +171,16 @@ export const ProductCard = ({ product }: { product: ProductType }) => {
         <div className="flex gap-2 mt-3">
           <button className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm border border-primary text-primary text-[10px] sm:text-xs font-medium hover:bg-primary/5 transition-colors cursor-pointer">
             <SquareArrowOutUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
-            <span className="hidden sm:inline">View Details</span>
-            <span className="sm:hidden">Details</span>
+            {/* <span className="hidden sm:inline">View Details</span> */}
+            <span className="">Details</span>
           </button>
           <button
             className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 sm:px-3 rounded-sm bg-primary text-white text-[10px] sm:text-xs font-medium hover:bg-secondary transition-colors"
             onClick={(e) => e.preventDefault()}
           >
             <RiShoppingCart2Line className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
-            <span className="hidden sm:inline">Add to cart</span>
-            <span className="sm:hidden">Cart</span>
+            {/* <span className="hidden sm:inline">Add to cart</span> */}
+            <span className="">Cart</span>
           </button>
         </div>
       </div>
@@ -255,13 +260,12 @@ const Products = () => {
           <MoveRight className="group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {loading
           ? Array.from({ length: 8 }).map((_, idx) => (
               <SkeletonCard key={idx} />
             ))
           : products.slice(0, 8).map((product, index) => (
-              // <ProductCard key={product.title} product={product} id={index} />
               <ProductCard key={product.title} product={product} />
             ))}
       </div>

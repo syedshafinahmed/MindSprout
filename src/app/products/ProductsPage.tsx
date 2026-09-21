@@ -141,118 +141,118 @@ const ProductsPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero  */}
-      <div className="bg-white">
-        <div className="max-w-7xl mx-auto mt-20 px-4 pt-12 pb-8">
-          <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-2">
-            Explore
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-neutral mb-3">
-            All{" "}
-            <span className="text-primary relative inline-block">
-              Products
-              <svg
-                className="absolute -bottom-1.5 left-0 w-full text-primary/30"
-                viewBox="0 0 100 8"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,5 Q50,0 100,5"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  fill="none"
-                />
-              </svg>
-            </span>
-          </h1>
-          <p className="text-slate-500 text-sm md:text-base max-w-xl">
-            {loading ? "..." : products.length} learning kits carefully crafted
-            for curious minds discover the perfect kit for your little explorer.
-          </p>
-        </div>
-      </div>
-
-      {/* Toolbar */}
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-          {/* Search */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products…"
-              className="w-full pl-10 pr-10 py-2.5 rounded-lg border border-slate-200 bg-white text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
-            />
-            {query && (
-              <button
-                onClick={() => setQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
+      {/* Header & Controls in one responsive row */}
+      <div className="max-w-7xl mx-auto mt-20 px-4 pt-12 pb-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-100">
+          {/* Left: Title & Subtitle */}
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold tracking-tight italic uppercase text-primary mb-2">
+              Explore
+            </p>
+            <h1 className="text-3xl md:text-5xl font-bold text-neutral mb-3">
+              All{" "}
+              <span className="text-primary relative inline-block">
+                Products
+                <svg
+                  className="absolute -bottom-1.5 left-0 w-full text-primary/30"
+                  viewBox="0 0 100 8"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0,5 Q50,0 100,5"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+            </h1>
+            <p className="text-slate-500 text-sm md:text-base">
+              {loading ? "..." : products.length} learning kits carefully crafted
+              for curious minds discover the perfect kit for your little explorer.
+            </p>
           </div>
 
-          {/* Spacer */}
-          <div className="flex-1 hidden sm:block" />
-
-          {/* Result count */}
-          <span className="text-sm text-slate-400 self-center shrink-0">
-            {filtered.length} {filtered.length === 1 ? "product" : "products"}
-          </span>
-
-          {/* Sort dropdown */}
-          <div className="relative shrink-0">
-            <button
-              onClick={() => setSortOpen((v) => !v)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-primary/40 transition-colors"
-            >
-              <SlidersHorizontal className="w-4 h-4 text-slate-400" />
-              {SORT_LABELS[sort]}
-              <ChevronDown
-                className={`w-3.5 h-3.5 text-slate-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
+          {/* Right: Search & Filtering Toolbar */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+            {/* Search */}
+            <div className="relative w-full sm:w-64 md:w-72">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search products…"
+                className="w-full pl-10 pr-10 py-2.5 rounded-lg border border-slate-200 bg-white text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition shadow-sm"
               />
-            </button>
+              {query && (
+                <button
+                  onClick={() => setQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
 
-            {sortOpen && (
-              <>
-                {/* backdrop */}
-                <div
-                  className="fixed inset-0 z-10"
-                  onClick={() => setSortOpen(false)}
+            {/* Sort dropdown */}
+            <div className="relative shrink-0">
+              <button
+                onClick={() => setSortOpen((v) => !v)}
+                className="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-2 px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-sm text-slate-700 hover:border-primary/40 transition-colors shadow-sm cursor-pointer"
+              >
+                <SlidersHorizontal className="w-4 h-4 text-slate-400" />
+                <span>{SORT_LABELS[sort]}</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-slate-400 transition-transform ${sortOpen ? "rotate-180" : ""}`}
                 />
-                <div className="absolute right-0 top-full mt-2 z-20 bg-white border border-slate-200 rounded-lg shadow-lg py-1.5 w-52 overflow-hidden">
-                  {(Object.keys(SORT_LABELS) as SortOption[]).map((key) => (
-                    <button
-                      key={key}
-                      onClick={() => {
-                        setSort(key);
-                        setSortOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-2 text-sm transition-colors ${
-                        sort === key
-                          ? "bg-primary/5 text-primary font-medium"
-                          : "text-slate-700 hover:bg-slate-50"
-                      }`}
-                    >
-                      {SORT_LABELS[key]}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
+              </button>
+
+              {sortOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setSortOpen(false)}
+                  />
+                  <div className="absolute right-0 top-full mt-1.5 z-20 bg-white border border-slate-200 rounded-xl shadow-lg py-1.5 w-52 overflow-hidden">
+                    {(Object.keys(SORT_LABELS) as SortOption[]).map((key) => (
+                      <button
+                        key={key}
+                        onClick={() => {
+                          setSort(key);
+                          setSortOpen(false);
+                        }}
+                        className={`w-full text-left px-4 py-2 text-xs transition-colors cursor-pointer flex items-center justify-between ${
+                          sort === key
+                            ? "bg-primary/5 text-primary font-bold"
+                            : "text-slate-700 hover:bg-slate-50"
+                        }`}
+                      >
+                        <span>{SORT_LABELS[key]}</span>
+                        {sort === key && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Result count */}
+            <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-2.5 rounded-lg shrink-0 text-center sm:text-left">
+              {filtered.length} {filtered.length === 1 ? "product" : "products"}
+            </span>
           </div>
         </div>
 
-        {/* Active search badge */}
+        {/* Active search tag badge */}
         {query && filtered.length > 0 && (
           <div className="mt-3 flex items-center gap-2">
             <span className="text-xs text-slate-500">Results for</span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary/8 text-primary text-xs font-medium rounded-full">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
               {query}
-              <button onClick={() => setQuery("")}>
+              <button onClick={() => setQuery("")} className="cursor-pointer">
                 <X className="w-3 h-3" />
               </button>
             </span>
@@ -262,7 +262,7 @@ const ProductsPage = () => {
 
       {/* Grid */}
       <div className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {loading ? (
             Array.from({ length: 8 }).map((_, idx) => (
               <div

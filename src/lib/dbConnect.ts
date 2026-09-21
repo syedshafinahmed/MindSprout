@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion, Collection, Document } from 'mongodb';
 
-const uri = process.env.MONGODB_URI || "mongodb+srv://hkadmin:b19xCbyB6peGu1jb@zyra.l75hwjs.mongodb.net/?appName=Zyra";
-const dbName = process.env.DBNAME || "herokidzdb";
+const uri = process.env.MONGODB_URI as string;
+const dbName = process.env.DBNAME as string;
 
 export const collections = {
   PRODUCTS: "products",
