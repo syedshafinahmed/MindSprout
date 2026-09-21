@@ -226,7 +226,22 @@ const Products = () => {
             Discover
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-neutral">
-            Our <span className="text-primary">Collection</span>
+            Our{" "}
+            <span className="text-primary relative inline-block">
+              Collection
+              <svg
+                className="absolute -bottom-1.5 left-0 w-full text-primary/30"
+                viewBox="0 0 100 8"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 Q50,0 100,5"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  fill="none"
+                />
+              </svg>
+            </span>
           </h2>
           <p className="text-slate-500 mt-2 text-xs md:text-sm">
             {loading ? "..." : products.length} learning kits for curious minds

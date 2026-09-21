@@ -21,8 +21,22 @@ const Banner = () => {
             className={`text-3xl md:text-6xl font-bold leading-8 md:leading-14 text-neutral mb-5 ${fontBangla.className}`}
           >
             প্রতিটি শিশুর জন্য একটি{" "}
-            <span className="text-primary pb-0.5">উজ্জ্বল আগামী</span> গড়ার
-            অঙ্গীকার
+            <span className="text-primary relative inline-block">
+              উজ্জ্বল আগামী
+              <svg
+                className="absolute -bottom-1.5 left-0 w-full text-primary/30"
+                viewBox="0 0 100 8"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 Q50,0 100,5"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  fill="none"
+                />
+              </svg>
+            </span>{" "}
+            গড়ার অঙ্গীকার
           </h1>
 
           <p className="text-base text-slate-500 leading-relaxed mb-8">

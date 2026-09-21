@@ -148,7 +148,22 @@ const ProductsPage = () => {
             Explore
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-neutral mb-3">
-            All <span className="text-primary">Products</span>
+            All{" "}
+            <span className="text-primary relative inline-block">
+              Products
+              <svg
+                className="absolute -bottom-1.5 left-0 w-full text-primary/30"
+                viewBox="0 0 100 8"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 Q50,0 100,5"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  fill="none"
+                />
+              </svg>
+            </span>
           </h1>
           <p className="text-slate-500 text-sm md:text-base max-w-xl">
             {loading ? "..." : products.length} learning kits carefully crafted
